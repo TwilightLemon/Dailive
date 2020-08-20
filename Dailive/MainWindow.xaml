@@ -1,0 +1,153 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dailive"
+        xmlns:Pages="clr-namespace:Dailive.Pages" x:Class="Dailive.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="675" Width="1050" MouseLeftButtonDown="Window_MouseLeftButtonDown" Loaded="Window_Loaded" MinWidth="965" MinHeight="380" Background="#FFA0A0A0">
+    <Window.Resources>
+        <Storyboard x:Key="NSPageAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                <EasingThicknessKeyFrame KeyTime="0" Value="280,0,-280,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ShowBackBtn">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                <EasingThicknessKeyFrame KeyTime="00:00:00.3000000" Value="56,0,0,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackBtn" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BackBtn" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="1" GlassFrameThickness="1"/>
+    </WindowChrome.WindowChrome>
+    <Border x:Name="bg" BorderThickness="1,1,1,1" BorderBrush="#FF1A1A1D" MouseDown="TopBar_MouseDown" Background="#7F000000">
+        <Grid x:Name="MainPage" Background="#33000000">
+            <Grid x:Name="TopPage" VerticalAlignment="Top" Height="50">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#33000000"/>
+                        <GradientStop Color="#00000000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Border x:Name="BackBtn" Width="25" Height="25" HorizontalAlignment="Left" Margin="20,0,0,0" Background="#00000000" Opacity="0" Visibility="Collapsed" MouseDown="BackBtn_MouseDown">
+                    <Path Data="M702.94996 958.89419c-8.375761 0-16.751522-3.196809-23.14514-9.590426L265.159102
+                          534.658046c-12.787234-12.777001-12.787234-33.513278 0-46.289256L679.80482 73.722048c12.787234-12.787234
+                          33.502022-12.787234 46.289256 0 12.787234 12.777001 12.787234 33.513278 0 46.289256L334.593498 511.512906l391.501602
+                          391.501602c12.787234 12.777001 12.787234 33.513278 0 46.289256C719.701482 955.697381 711.325721 958.89419 702.94996 
+                          958.89419z" Fill="White" Stretch="Uniform" Height="15"/>
+                </Border>
+                <Border x:Name="CloseBtn" HorizontalAlignment="Right" Width="25" Height="25" Margin="0,0,12.5,0" MouseDown="CloseBtn_MouseDown" Background="Transparent" Cursor="Hand">
+                    <Path Data="M40.6016 40.6016a51.2 51.2 0 0 1 72.3968 0L511.232 438.784 909.4912 40.6016a51.2 51.2 0 0 1 72.3968 72.3968L583.68
+                          511.232l398.2336 398.2592a51.2 51.2 0 0 1 2.9952 69.1456l-2.9952 3.2512a51.2 51.2 0 0 1-72.3968 0L511.232 583.68 112.9984 981.888a51.2 51.2 0 0 1-72.3968-72.3968L438.784 511.232 40.6016
+                          112.9984a51.2 51.2 0 0 1-2.9952-69.1456z" Fill="White" Stretch="Fill" Margin="6"/>
+                </Border>
+                <Border x:Name="MinBtn" HorizontalAlignment="Right" Width="25" Height="25" Margin="0,12,50,12" Background="Transparent" Cursor="Hand" MouseDown="MinBtn_MouseDown">
+                    <Path Data="M979.478261 560.973913H89.043478c-35.617391 0-71.234783-35.617391-71.234782-71.234783s35.617391-71.234783 71.234782-71.234782h890.434783c35.617391
+                          0 71.234783 26.713043 71.234782 71.234782s-35.617391 71.234783-71.234782 71.234783z" Fill="White" Stretch="Uniform" Margin="6" Width="13" Height="3" VerticalAlignment="Bottom"/>
+                </Border>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,0,0,0" Text="Dailive: Day&amp;Life" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Normal"/>
+            </Grid>
+            <Grid x:Name="BottomPage" Height="25" VerticalAlignment="Bottom" Background="#B2000000">
+                <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Dailive  Powered by .Net Core 3.1   ©Twilight./Lemon 2020" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#FF999999"/>
+                <TextBlock HorizontalAlignment="Right" Text="Image From www.bing.com" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#FF999999" Margin="0,0,10,0"/>
+            </Grid>
+            <Grid Margin="0,50,0,25">
+                <Grid x:Name="SearchPage" Visibility="Visible">
+                    <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="150,0,30,50" Background="#4C000000" CornerRadius="15,15,15,15" Cursor="Hand">
+                        <Grid>
+                            <Path Data="M 14 30.94 v -28.14 l -8 -2.8 v 35.54 l 8 4.46 l 20 -11.5 v -9.1 Z M 25.28 24.43 l 8.72 -5.03 l -17.74 -6.2 l 3.47 8.65 l 5.55 2.58 Z" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Fill="White" Stretch="Uniform" Margin="13,0,0,0"/>
+                            <TextBlock x:Name="BgImg_Url" Text="藏在高高的草丛中的狮子幼崽，博茨瓦纳卡拉哈里沙漠 (© Jami Tarris/Getty Images)" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFDADADA" Margin="30,10,10,10"/>
+                        </Grid>
+                    </Border>
+                    <Grid Margin="0,80,0,0" VerticalAlignment="Top" Width="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border VerticalAlignment="Center" Background="#99000000" CornerRadius="{DynamicResource BorderCornerRadius}" Margin="10,0,10,0" Grid.Column="1" MinWidth="200">
+                            <Grid>
+                                <Path Data="M814.865261 769.618492l142.674667 148.942455c24.906214 24.741272 24.906214 68.28591 0 93.027182l6.267789-6.267789c-24.906214 24.906214-62.018121 24.906214-86.924335 0l-148.942455-155.210245c-74.388757 49.647485-167.58088
+                                      80.656546-260.608062 80.656546-254.505215 0.164942-465.465791-210.795635-465.465791-465.30085C1.867074 211.125518 206.724803 0 461.065076 0c254.505215 0 465.465791 211.125518 465.465792 465.465791 0 117.933395-43.379696
+                                      223.496154-111.665607 304.152701zM467.332865 837.904401C672.025653 837.904401 839.606533 670.323521 839.606533 465.465791 839.606533 260.608062 672.025653 93.027182 467.167923 93.027182 262.310194 93.027182 94.729313 260.608062 94.729313
+                                      465.465791 94.894255 670.323521 262.475135 837.904401 467.332865 837.904401z m0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Fill="Gainsboro" Stretch="Uniform" Margin="0,21,20,0"/>
+                                <TextBox x:Name="SearchBox" TextWrapping="Wrap" Margin="10,23,60,0" VerticalAlignment="Top" BorderThickness="0,0,0,0" Background="Transparent" Foreground="White" CaretBrush="White" TextChanged="SearchBox_TextChanged" Text="搜索" PreviewKeyDown="SearchBox_PreviewKeyDown"/>
+                                <ListBox x:Name="SearchSugBox" Margin="0,60,0,0" BorderThickness="0,0,0,0" Background="Transparent" Foreground="White" KeyDown="SearchSugBox_KeyDown" MouseDoubleClick="SearchSugBox_MouseDoubleClick"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Border x:Name="BgImg_LastBtn" HorizontalAlignment="Left" Height="35" Margin="30,0,0,50" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand" MouseDown="BgImg_LastBtn_MouseDown">
+                        <Path Data="M769.799779 68.804451L388.949268 515.243701l380.647593 441.94305-77.538954 66.813249-437.856687-508.346463L691.954948 2.400039z" Fill="#FFF3F3F3" Stretch="Uniform" Width="8" Height="15" Margin="0,0,2,0"/>
+                    </Border>
+                    <Border x:Name="BgImg_NextBtn" HorizontalAlignment="Left" Height="35" Margin="75,0,0,50" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand" MouseDown="BgImg_NextBtn_MouseDown">
+                        <Path Data="M254.212 957.548l380.833-446.416L254.417 69.21 331.952 2.4l437.836 508.374L332.054 1024z" Fill="#FFF3F3F3" Stretch="Uniform" Width="8" Height="15" Margin="2,0,0,0"/>
+                    </Border>
+                    <Border HorizontalAlignment="Left" Height="35" Margin="120,0,0,50" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand">
+                        <Path Data="M874 712.2H154.7c-47.1 0-85.4-38.3-85.4-85.4V224.1c0-47.1 38.3-85.4 85.4-85.4H874c47.1 0 85.4 38.3 85.4 85.4v402.7c-0.1 47.1-38.4 85.4-85.4 85.4zM154.7
+                              195.7c-15.7 0-28.5 12.8-28.5 28.5v402.7c0 15.7 12.8 28.5 28.5 28.5H874c15.7 0 28.5-12.8 28.5-28.5V224.1c0-15.7-12.8-28.5-28.5-28.5l-719.3 0.1z M697.4 890.4H331.3c-15.7
+                              0-28.5-12.7-28.5-28.5 0-15.7 12.7-28.5 28.5-28.5h366.1c15.7 0 28.5 12.7 28.5 28.5-0.1 15.8-12.8 28.5-28.5 28.5z" Fill="#FFF3F3F3" Stretch="Uniform" Width="15" Height="15"
+                              Stroke="#FFF3F3F3" StrokeThickness="0.5"/>
+                    </Border>
+                    <WrapPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="30,0,30,150" HorizontalAlignment="Center" Height="100">
+                        <Pages:AppsGoto x:Name="WeatherBtn" Data="M390.190747 438.780395c-17.305131 0-31.335682 14.025435-31.335682
+                31.335682l0 30.571273c0 17.310248 14.030551 31.335682 31.335682 31.335682 17.305131 0 31.335682-14.025435
+                31.335682-31.335682l0-30.571273C421.526429 452.80583 407.495878 438.780395 390.190747 438.780395z
+                M634.768091 438.780395c-17.310248 0-31.335682 14.025435-31.335682 31.335682l0 30.571273c0 17.310248
+                14.025435 31.335682 31.335682 31.335682 17.310248 0 31.335682-14.025435 31.335682-31.335682l0-30.571273C666.103774
+                452.80583 652.078339 438.780395 634.768091 438.780395z
+                M589.758991 580.699662c-14.305821-9.435906-33.682124-5.426593-43.301202 8.783037-0.13303 0.193405-13.658068
+                19.819394-34.288944 19.819394-20.058848 0-32.534997-18.166755-33.381271-19.431561-9.195429-14.484899-28.377304-18.87079-42.969651-9.792017-14.703887
+                9.129938-19.21769 28.448936-10.083659 43.147706 11.246135 18.105357 42.113143 48.748261 86.433558 48.748261 44.106544 0 75.351152-30.407544 86.862323-48.380894C608.278787
+                609.149621 604.086301 590.125335 589.758991 580.699662z
+                M94.361111 553.964764c4.38589 2.111081 9.017374 3.110851 13.577227 3.110851 11.659551 0 22.854521-6.538927 28.255531-17.749246 25.067932-52.05354 61.937654-89.846284 96.221482-98.618065
+                11.210319-2.866281 19.921725-11.680017 22.670326-22.910802 28.291346-115.693975 116.831892-184.762027 236.840126-184.762027 85.312014 0 168.002318 51.05377 184.323029 113.796766 3.682879
+                14.158465 16.780175 24.276916 31.304983 23.430642 1.76418-0.051165 3.508917-0.081864 5.243421-0.081864 94.344738 0 158.475338 80.298837 173.387979 161.14719 3.14155 17.024745 19.533892 28.306696
+                36.497239 25.134447 17.024745-3.14155 28.275997-19.482727 25.134447-36.497239-21.788236-118.141724-111.827925-203.775057-218.750119-211.82336-34.039257-79.981612-131.188878-137.777947-237.140978-137.777947-142.659117
+               0-253.517971 82.155115-293.1629 215.699644-45.994544 19.044752-89.514733 64.763003-119.03507 126.068254C72.215742 527.72924 78.770018 546.456766 94.361111 553.964764z
+                M934.405449 598.593194c-16.963347-3.692089-33.610492 6.019087-37.303604 22.921036-22.002107 100.709703-104.738459 171.807994-196.726523 171.807994L279.952017 793.322224c-82.052784 0-151.375639-76.495208-151.375639-168.81994
+0-17.310248-14.030551-29.837562-31.335682-29.837562s-31.335682 13.026688-31.335682 30.336936c0 126.292358 98.021477 230.991931 214.047004 230.991931L700.375322 855.993588c121.222899 0 229.714845-92.325755 257.94991-221.596957C962.018344 617.485473 951.308421 602.285283
+934.405449 598.593194z" Txt="Weather" MouseDown="WeatherBtn_MouseDown" Margin="0,0,20,0"/>
+                        <Pages:AppsGoto x:Name="TransBtn" Data="M980.718933 934.229333c0 25.634133-20.821333 46.523733-46.4896 46.523734H483.157333c-25.6 0-46.4896-20.8896-46.4896-46.523734v-303.616h114.619734a79.428267 79.428267 0 0 0
+                                        79.325866-79.325866v-114.619734h303.616c25.634133 0 46.4896 20.855467 46.4896 46.523734V934.229333zM43.281067 551.253333V79.36c0-19.899733 16.145067-36.0448 36.0448-36.0448H551.253333c19.8656 0 36.0448
+                                        16.145067 36.0448 36.0448v471.9616c0 19.8656-16.1792 36.0448-36.0448 36.0448H79.325867a36.078933 36.078933 0 0 1-36.0448-36.0448z m890.948266-157.832533h-303.616V79.325867A79.428267 79.428267 0 0 0 551.253333
+                                        0H79.325867A79.428267 79.428267 0 0 0 0 79.325867v471.9616a79.428267 79.428267 0 0 0 79.325867 79.325866h314.0608v303.616c0 49.493333 40.277333 89.770667 89.770666 89.770667H934.229333c49.493333 0
+                                        89.770667-40.277333 89.770667-89.770667V483.191467c0-49.493333-40.277333-89.770667-89.770667-89.770667z
+M334.506667 318.805333h88.951466V246.101333H334.506667v72.704z m-132.232534 0h88.951467V246.101333H202.274133v72.704z m228.352-115.985066c19.933867 0 36.078933 16.1792 36.078934 36.0448v87.1424c0
+                                        19.899733-16.145067 36.078933-36.0448 36.078933H334.506667v109.431467a21.640533 21.640533 0 0 1-43.281067 0v-109.431467H195.072A36.078933 36.078933 0 0 1 159.061333 325.973333V238.865067c0-19.8656
+                                        16.1792-36.0448 36.0448-36.0448h96.1536V164.693333a21.640533 21.640533 0 0 1 43.281067 0v38.126934h96.1536z m314.4704-73.728a21.640533 21.640533 0 0 1-19.797333-23.313067 21.845333 21.845333 0 0 1 23.2448-19.797333c65.6384 5.12 190.7712 52.736 194.56 195.925333 0.273067
+                                        11.946667-9.147733 21.845333-21.0944 22.186667h-0.580267a21.640533 21.640533 0 0 1-21.6064-21.0944c-3.6864-139.707733-148.548267-153.3952-154.7264-153.941334zM290.5088
+                                        876.509867a21.640533 21.640533 0 0 1-8.260267 42.461866c-166.946133-32.4608-187.528533-195.9936-187.733333-197.632a21.640533 21.640533 0 0 1 43.008-4.983466c0.648533 5.461333 17.6128 133.802667 152.9856 160.1536zM684.885333 
+                                        752.605867l39.765334-100.9664 38.7072 100.9664h-78.506667z m60.2112-168.413867a21.640533 21.640533 0 0 0-20.104533-13.892267h-0.1024c-8.874667 0-16.861867 5.4272-20.138667 13.7216l-100.386133 254.976a21.640533 21.640533 0 1 0 40.277333 15.872l23.210667-58.9824h112.093867l22.528
+                                        58.7776a21.640533 21.640533 0 0 0 40.413866-15.496533l-97.792-254.976z" Txt="Translate" MouseDown="WeatherBtn_MouseDown"/>
+                    </WrapPanel>
+                </Grid>
+                <Grid x:Name="WeatherPage" Visibility="Collapsed">
+                    <local:MyScrollView Template="{DynamicResource ScrollViewerControlTemplate}">
+                        <Pages:WeatherBox/>
+                    </local:MyScrollView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

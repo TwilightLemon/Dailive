@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Dailive.Pages.DayHourWeather"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dailive.Pages"
+             mc:Ignorable="d" Width="120" Height="150">
+    <Border Background="#66000000" CornerRadius="{DynamicResource BorderCornerRadius}">
+        <Grid>
+            <TextBlock x:Name="time" HorizontalAlignment="Center" Text="12:00" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,0,10" Foreground="WhiteSmoke"/>
+            <Border x:Name="img" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="50" Margin="0,20,0,0">
+                <Border.Background>
+                    <ImageBrush ImageSource="https://a.hecdn.net/img/plugin/190516/icon/c/305d.png"/>
+                </Border.Background>
+            </Border>
+            <TextBlock x:Name="desc" HorizontalAlignment="Center" Text="Sunny" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="WhiteSmoke"/>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,30,0,0" Foreground="WhiteSmoke" TextAlignment="Center"><Run x:Name="wind" Text="North 1-2"/> <LineBreak/><Run x:Name="UV" Text="" Foreground="#FFAB64FF"/></TextBlock>
+        </Grid>
+    </Border>
+</UserControl>
