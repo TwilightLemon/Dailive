@@ -43,13 +43,7 @@
     </WindowChrome.WindowChrome>
     <Border x:Name="bg" BorderThickness="1,1,1,1" BorderBrush="#FF1A1A1D" MouseDown="TopBar_MouseDown" Background="#7F000000">
         <Grid x:Name="MainPage" Background="#33000000">
-            <Grid x:Name="TopPage" VerticalAlignment="Top" Height="50">
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#33000000"/>
-                        <GradientStop Color="#00000000" Offset="1"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
+            <Grid x:Name="TopPage" VerticalAlignment="Top" Height="50" Background="#33000000">
                 <Border x:Name="BackBtn" Width="25" Height="25" HorizontalAlignment="Left" Margin="20,0,0,0" Background="#00000000" Opacity="0" Visibility="Collapsed" MouseDown="BackBtn_MouseDown">
                     <Path Data="M702.94996 958.89419c-8.375761 0-16.751522-3.196809-23.14514-9.590426L265.159102
                           534.658046c-12.787234-12.777001-12.787234-33.513278 0-46.289256L679.80482 73.722048c12.787234-12.787234
@@ -74,7 +68,7 @@
             </Grid>
             <Grid Margin="0,50,0,25">
                 <Grid x:Name="SearchPage" Visibility="Visible">
-                    <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="150,0,30,50" Background="#4C000000" CornerRadius="15,15,15,15" Cursor="Hand">
+                    <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,24" Background="#4C000000" CornerRadius="15,15,15,15" Cursor="Hand">
                         <Grid>
                             <Path Data="M 14 30.94 v -28.14 l -8 -2.8 v 35.54 l 8 4.46 l 20 -11.5 v -9.1 Z M 25.28 24.43 l 8.72 -5.03 l -17.74 -6.2 l 3.47 8.65 l 5.55 2.58 Z" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Fill="White" Stretch="Uniform" Margin="13,0,0,0"/>
                             <TextBlock x:Name="BgImg_Url" Text="藏在高高的草丛中的狮子幼崽，博茨瓦纳卡拉哈里沙漠 (© Jami Tarris/Getty Images)" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFDADADA" Margin="30,10,10,10"/>
@@ -97,13 +91,13 @@
                             </Grid>
                         </Border>
                     </Grid>
-                    <Border x:Name="BgImg_LastBtn" HorizontalAlignment="Left" Height="35" Margin="30,0,0,50" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand" MouseDown="BgImg_LastBtn_MouseDown">
+                    <Border x:Name="BgImg_LastBtn" HorizontalAlignment="Left" Height="35" Margin="30,0,0,24" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand" MouseDown="BgImg_LastBtn_MouseDown">
                         <Path Data="M769.799779 68.804451L388.949268 515.243701l380.647593 441.94305-77.538954 66.813249-437.856687-508.346463L691.954948 2.400039z" Fill="#FFF3F3F3" Stretch="Uniform" Width="8" Height="15" Margin="0,0,2,0"/>
                     </Border>
-                    <Border x:Name="BgImg_NextBtn" HorizontalAlignment="Left" Height="35" Margin="75,0,0,50" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand" MouseDown="BgImg_NextBtn_MouseDown">
+                    <Border x:Name="BgImg_NextBtn" HorizontalAlignment="Left" Height="35" Margin="75,0,0,24" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand" MouseDown="BgImg_NextBtn_MouseDown">
                         <Path Data="M254.212 957.548l380.833-446.416L254.417 69.21 331.952 2.4l437.836 508.374L332.054 1024z" Fill="#FFF3F3F3" Stretch="Uniform" Width="8" Height="15" Margin="2,0,0,0"/>
                     </Border>
-                    <Border HorizontalAlignment="Left" Height="35" Margin="120,0,0,50" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand">
+                    <Border HorizontalAlignment="Left" Height="35" Margin="120,0,0,24" VerticalAlignment="Bottom" Width="35" Background="#4C000000" CornerRadius="30,30,30,30" Cursor="Hand">
                         <Path Data="M874 712.2H154.7c-47.1 0-85.4-38.3-85.4-85.4V224.1c0-47.1 38.3-85.4 85.4-85.4H874c47.1 0 85.4 38.3 85.4 85.4v402.7c-0.1 47.1-38.4 85.4-85.4 85.4zM154.7
                               195.7c-15.7 0-28.5 12.8-28.5 28.5v402.7c0 15.7 12.8 28.5 28.5 28.5H874c15.7 0 28.5-12.8 28.5-28.5V224.1c0-15.7-12.8-28.5-28.5-28.5l-719.3 0.1z M697.4 890.4H331.3c-15.7
                               0-28.5-12.7-28.5-28.5 0-15.7 12.7-28.5 28.5-28.5h366.1c15.7 0 28.5 12.7 28.5 28.5-0.1 15.8-12.8 28.5-28.5 28.5z" Fill="#FFF3F3F3" Stretch="Uniform" Width="15" Height="15"

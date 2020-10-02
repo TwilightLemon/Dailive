@@ -102,7 +102,8 @@ namespace Dailive
         {
             var data = await HttpHelper.GetWebAsync($"https://www.bing.com/HPImageArchive.aspx?format=js&idx={BingImgIndex}&n=1&mkt=zh-CN");
             JObject obj = JObject.Parse(data);
-            this.Background = new ImageBrush(new BitmapImage(new Uri("https://www.bing.com" + obj["images"][0]["url"]))) { Stretch = Stretch.UniformToFill };
+            var bitmap = new BitmapImage(new Uri("https://www.bing.com" + obj["images"][0]["url"]));
+            this.Background = new ImageBrush(bitmap) { Stretch = Stretch.UniformToFill };
             BgImg_Url.Text = obj["images"][0]["copyright"].ToString();
             BgImg_Url.Uid = obj["images"][0]["copyrightlink"].ToString();
         }

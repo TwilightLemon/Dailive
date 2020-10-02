@@ -18,16 +18,6 @@ namespace Dailive.Helpers
             string sx= await sr.ReadToEndAsync();
             return sx;
         }
-        public static async Task<string> GetWebGZIPAsync(string url, Encoding e = null)
-        {
-            e ??= Encoding.UTF8;
-            HttpWebRequest hw = (HttpWebRequest)WebRequest.Create(url);
-            using var st = await hw.GetResponseAsync();
-            using GZipStream decodeStream = new GZipStream(st.GetResponseStream(), CompressionMode.Decompress);
-            using StreamReader sr = new StreamReader(decodeStream, e);
-            string sx = await sr.ReadToEndAsync();
-            return sx;
-        }
         /// 带上简单Header的Get请求
         /// </summary>
         /// <param name="url"></param>

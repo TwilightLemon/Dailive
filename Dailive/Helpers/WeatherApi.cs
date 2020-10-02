@@ -92,7 +92,7 @@ namespace Dailive.Helpers
         }
 
         public static async Task<List<City>> SearchCitiesByNameAsync(string name) {
-            string json = await HttpHelper.GetWebWithHeaderAsync($"https://search.heweather.net/find?key=bdd98ec1d87747f3a2e8b1741a5af796&location={HttpUtility.UrlDecode(name)}&group=overseas,cn&lang=zh");
+            string json = await HttpHelper.GetWebWithHeaderAsync($"https://search.heweather.net/find?key=500e448f9e6c440aab8aa50f14220331&location={HttpUtility.UrlDecode(name)}&group=overseas,cn&lang=zh");
             var data = JObject.Parse(json)["HeWeather6"][0]["basic"];
             List<City> c = new List<City>();
             foreach (var a in data) {
@@ -133,7 +133,8 @@ namespace Dailive.Helpers
                 });
             }
             data.Hours = hdata;
-            JObject days = JObject.Parse(await HttpHelper.GetWebGZIPAsync($"https://devapi.heweather.net/v7/weather/7d?location={c.cid}&key=500e448f9e6c440aab8aa50f14220331"));
+            JObject days = JObject.Parse(await HttpHelper.GetWebWithHeaderAsync($"https://devapi.heweather.net/v7/weather/3" +
+                $"d?location={c.cid}&key=500e448f9e6c440aab8aa50f14220331",true));
             List<DailyWeather> Daily = new List<DailyWeather>();
             var d = days["daily"];
             foreach (var a in d) {
